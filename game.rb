@@ -27,7 +27,7 @@ class Game
   end
 
   def check_action(status)
-    return (@valera.status['mana'] >= 70) || (@valera.check_status(status) == false) if @action_item == 1
+    return (@valera.status['mana'] >= 50) || (@valera.check_status(status) == false) || (@valera.status['fatigue'] >= 10) if @action_item == 1
 
     @valera.check_status(status) == false
   end

@@ -30,19 +30,19 @@ class Valera
   end
 
   def check_hp(hp)
-    hp > 0 && hp <= 100
+    hp > 0
   end
 
   def check_mana(mana)
-    mana >= 0 && mana <= 100
+    mana <= 100
   end
 
   def check_happienss(happienss)
-    happienss <= 10
+    happienss >= -20
   end
 
   def check_fatigue(fatigue)
-    fatigue >= 0 && fatigue <= 100
+    fatigue <= 100
   end
 
   def check_money(money)
