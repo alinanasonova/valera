@@ -1,0 +1,24 @@
+AllCops:
+  NewCops: enable
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 50
+
+Metrics/CyclomaticComplexity:
+  Max: 13
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/PerceivedComplexity:
+  Max: 14
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/*_spec.rb'

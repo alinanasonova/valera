@@ -16,11 +16,11 @@ class Saver
     filename = ''
 
     loop do
-      printf "Введите название файла\nВвод >> "
+      printf "enter file name\ninput >> "
       filename = "./saves/#{$stdin.gets.strip}.json"
       break unless !File.file?(filename) && (choice == 8)
 
-      puts 'Ошибка! Файл не существует.'
+      puts 'file doesn`t exist'
     end
 
     case choice
