@@ -1,0 +1,28 @@
+{
+    "actions": 
+    {
+        "go_work":
+        {
+            "happienss": 
+            {
+               "value": "5",
+                "operator": "-"
+            },
+            "mana": 
+            {
+               "value": "30",
+                "operator": "-"
+            },
+            "money": 
+            {
+               "value": "100",
+                "operator": "+"
+            },
+            "fatigue": 
+            {
+               "value": "70",
+                "operator": "+"
+            }
+        }
+    }
+}
