@@ -65,7 +65,7 @@ RSpec.describe Game do
     #  action_item = 0
     #  it { expect(game.action_menu(status, action_item, action_hash, arr_action)).to output("Game Over").to_stderr }
     # end
-    #describe '.program exit' do
+    # describe '.program exit' do
     #  it 'aaaaa' do
     ##    expect do
     ##      input = '0'
@@ -76,6 +76,6 @@ RSpec.describe Game do
     #      end
     #    end.to output("Game Over\n").to_stderr
     #  end
-    #end
+    # end
   end
 end
