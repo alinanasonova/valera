@@ -13,14 +13,6 @@ class Game
     attr_reader :actions
   end
 
-  def check_action(status)
-    if @action_item == 1
-      return (@valera.status['mana'] >= 50) || (@valera.check_status(status) == false) || (@valera.status['fatigue'] >= 10)
-    end
-
-    @valera.check_status(status) == false
-  end
-
   def action_menu(status, action_item, action_hash, arr_action)
     case action_item
     when 1..7
@@ -36,7 +28,7 @@ class Game
   end
 
   def do_action(action_hash, arr_action)
-    status = action_menu(@valera.status, @action_item, action_hash, arr_action)
+    action_menu(@valera.status, @action_item, action_hash, arr_action)
     system('clear')
     # puts("\nCant do it") if check_action(@valera.status)
     # p status
