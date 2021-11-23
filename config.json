@@ -3,7 +3,7 @@
         "conds": {
             "fatigue": {
                 "value": "30",
-                "operator": "<"
+                "operator": ">"
             }
         },
         "effects": {
