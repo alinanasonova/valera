@@ -1,7 +1,7 @@
 class Valera
   attr_accessor :status
 
-  def initialize(hp = 100, mana = 0, happienss = 0, money = 0, fatigue = 0)
+  def initialize(hp = 100, mana = 50, happienss = 50, money = 50, fatigue = 50)
     @status = {
       'hp' => hp,
       'mana' => mana,
@@ -30,7 +30,7 @@ class Valera
   end
 
   def check_hp(hp)
-    hp > 0
+    hp.positive?
   end
 
   def check_mana(mana)
