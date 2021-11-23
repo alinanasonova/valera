@@ -23,7 +23,7 @@ class Application
   end
 
   def run
-    action_hash = open_config
+    action_hash = open_config()
     arr_action = action_array(action_hash)
     loop do
       print "HP: #{@valera.status['hp']}\n"
