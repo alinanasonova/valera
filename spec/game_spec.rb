@@ -20,9 +20,9 @@ RSpec.describe Game do
   describe '.game' do
     game = Game.new
     status = {
-      'hp' => 100,
+      'health' => 100,
       'mana' => 50,
-      'happienss' => -10,
+      'happienss' => 20,
       'fatigue' => 50,
       'money' => 50
     }
@@ -33,7 +33,7 @@ RSpec.describe Game do
 
     # context 'do_action' do
     #  exp = {
-    #    'hp' => 100,
+    #    'health' => 100,
     #    'mana' => 20,
     #    'happienss' => 45,
     #    'fatigue' => 120,
@@ -44,18 +44,18 @@ RSpec.describe Game do
     # end
     context 'action_menu' do
       expected_status = {
-        'hp' => 100,
+        'health' => 100,
         'mana' => 20,
-        'happienss' => 45,
+        'happienss' => 15,
         'fatigue' => 120,
-        'money' => 200
+        'money' => 150
       }
-      it { expect(game.action_menu(status, 0, action_hash, arr_action)).to eq expected_status }
+      it { expect(game.action_menu(status, action_item, action_hash, arr_action)).to eq expected_status }
     end
 
     # context 'action_menu' do
     #  expected_status = {
-    #    'hp' => 100,
+    #    'health' => 100,
     #    'mana' => 20,
     #    'happienss' => 45,
     #    'fatigue' => 120,
@@ -65,17 +65,17 @@ RSpec.describe Game do
     #  action_item = 0
     #  it { expect(game.action_menu(status, action_item, action_hash, arr_action)).to output("Game Over").to_stderr }
     # end
-    describe '.program exit' do
-      it 'aaaaa' do
-        expect do
-          input = '0'
-          capture_stdout(input) do
-            Game.new.action_menu(status, action_item, action_hash, arr_action)
-          rescue SystemExit
-            nil
-          end
-        end.to output("Game Over\n").to_stderr
-      end
-    end
+    #describe '.program exit' do
+    #  it 'aaaaa' do
+    ##    expect do
+    ##      input = '0'
+    #      capture_stdout(input) do
+    #        Game.new.action_menu(status, action_item, action_hash, arr_action)
+    #      rescue SystemExit
+    #        nil
+    #      end
+    #    end.to output("Game Over\n").to_stderr
+    #  end
+    #end
   end
 end

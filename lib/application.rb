@@ -26,7 +26,7 @@ class Application
     action_hash = open_config
     arr_action = action_array(action_hash)
     loop do
-      print "HP: #{@valera.status['hp']}\n"
+      print "HP: #{@valera.status['health']}\n"
       print "Mana: #{@valera.status['mana']}\n"
       print "happienss: #{@valera.status['happienss']}\n"
       print "Fatigue: #{@valera.status['fatigue']}\n"

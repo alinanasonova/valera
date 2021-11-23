@@ -3,7 +3,7 @@ require './lib/actions'
 RSpec.describe Actions do
   describe '.actions' do
     status = {
-      'hp' => 10,
+      'health' => 10,
       'mana' => 10,
       'happienss' => 10,
       'fatigue' => 10,
@@ -48,7 +48,7 @@ RSpec.describe Actions do
     context 'sender' do
       key = { 'value' => '10', 'operator' => '+' }
       expected = 20
-      it { expect(Actions.new.sender(status['hp'], key)).to eq expected }
+      it { expect(Actions.new.sender(status['health'], key)).to eq expected }
     end
     context 'action_cond' do
       action_cond_ = {
@@ -80,7 +80,7 @@ RSpec.describe Actions do
     end
     context 'change_status' do
       expected = {
-        'hp' => 10,
+        'health' => 10,
         'mana' => 20,
         'happienss' => 20,
         'fatigue' => 20,
@@ -90,7 +90,7 @@ RSpec.describe Actions do
     end
     context 'selected_action' do
       expected = {
-        'hp' => 10,
+        'health' => 10,
         'mana' => 20,
         'happienss' => 20,
         'fatigue' => 20,

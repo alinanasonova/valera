@@ -67,7 +67,7 @@
             }
         },
         "effects":{
-            "hp":{
+            "health":{
                 "value": "5",
                 "operator": "-"
             },
@@ -97,7 +97,7 @@
             }
         },
         "effects":{
-            "hp":{
+            "health":{
                 "value": "10",
                 "operator": "-"
             },
@@ -128,7 +128,7 @@
             }
         },
         "effects":{
-            "hp":{
+            "health":{
                 "value": "80",
                 "operator": "-"
             },
@@ -194,7 +194,7 @@
         "conds":{
         },
         "effects":{
-            "hp":{
+            "health":{
                 "value": "0",
                 "operator": "+",
                 "conds": {

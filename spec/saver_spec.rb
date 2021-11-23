@@ -4,7 +4,7 @@ RSpec.describe Saver do
   describe '.saver' do
     context 'save_load_menu' do
       status = {
-        'hp' => 100,
+        'health' => 100,
         'mana' => 10,
         'happienss' => -1,
         'fatigue' => 25,
