@@ -1,11 +1,11 @@
-require './valera'
+require './lib/valera'
 
 RSpec.describe Valera do
   describe '.valera' do
     valera = Valera.new
     context 'check_true' do
       status = {
-        'hp' => 100,
+        'health' => 100,
         'mana' => 30,
         'happienss' => 5,
         'fatigue' => 0,
@@ -15,7 +15,7 @@ RSpec.describe Valera do
     end
     context 'check_false' do
       status = {
-        'hp' => 30,
+        'health' => 30,
         'mana' => 250,
         'happienss' => 5,
         'fatigue' => 0,
@@ -25,7 +25,7 @@ RSpec.describe Valera do
     end
     context 'check_false' do
       status = {
-        'hp' => 30,
+        'health' => 30,
         'mana' => 30,
         'happienss' => 5,
         'fatigue' => 250,

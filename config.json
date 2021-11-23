@@ -1,0 +1,236 @@
+{
+    "Go work":{
+        "conds": {
+            "fatigue": {
+                "value": "30",
+                "operator": ">"
+            }
+        },
+        "effects": {
+            "happienss": {
+                "value": "5",
+                "operator": "-"
+            },
+            "mana": {
+                "value": "30",
+                "operator": "-"
+            },
+            "money": {
+                "value": "100",
+                "operator": "+",
+                "conds": {
+                    "happienss": {
+                        "value": "20",
+                        "operator": ">"
+                    }
+                },
+                "then": {
+                    "value": "150",
+                    "operator": "+"
+                }
+            },
+            "fatigue": {
+                "value": "70",
+                "operator": "+"
+            }
+        }
+    },
+    "See nature":{
+        "conds": {
+            "mana": 
+            {
+                "value": "10",
+                "operator": ">"
+            }
+        },
+        "effects": {
+            "happienss": {
+                "value": "1",
+                "operator": "+"
+            },
+            "mana": {
+                "value": "10",
+                "operator": "-"
+            },
+            "fatigue": {
+                "value": "10",
+                "operator": "+"
+            }
+        }
+    },
+    "See serial":{
+        "conds":{
+            "money": 
+            {
+                "value": "20",
+                "operator": ">"
+            }
+        },
+        "effects":{
+            "health":{
+                "value": "5",
+                "operator": "-"
+            },
+            "happienss":{
+                "value": "1",
+                "operator": "-"
+            },
+            "mana":{
+                "value": "30",
+                "operator": "+"
+            },
+            "money":{
+                "value": "20",
+                "operator": "-"
+            },
+            "fatigue":{
+                "value": "10",
+                "operator": "+"
+            }
+        }
+    },
+    "Go to bar":{
+        "conds":{
+            "money":{
+                "value": "100",
+                "operator": ">"
+            }
+        },
+        "effects":{
+            "health":{
+                "value": "10",
+                "operator": "-"
+            },
+            "happienss":{
+                "value": "1",
+                "operator": "+"
+            },
+            "mana":{
+                "value": "60",
+                "operator": "+"
+            },
+            "money":{
+                "value": "100",
+                "operator": "-"
+            },
+            "fatigue":{
+                "value": "40",
+                "operator": "+"
+            }
+        }
+        
+    },
+    "Drink with marginals":{
+        "conds":{
+            "money":{
+                "value": "150",
+                "operator": ">"
+            }
+        },
+        "effects":{
+            "health":{
+                "value": "80",
+                "operator": "-"
+            },
+            "happienss":{
+                "value": "5",
+                "operator": "+"
+            },
+            "mana":{
+                "value": "90",
+                "operator": "+"
+            },
+            "money":{
+                "value": "150",
+                "operator": "-"
+            },
+            "fatigue":{
+                "value": "80",
+                "operator": "+"
+            }
+        }
+        
+    },
+    "Sing":
+    {
+        "conds":{
+
+        },
+        "effects":{
+            "happienss":{
+                "value": "1",
+                "operator": "+"
+            },
+            "mana":{
+                "value": "10",
+                "operator": "+"
+            },
+            "money":{
+                "value": "10",
+                "operator": "+",
+                "conds": {
+                    "mana": {
+                        "value": "40",
+                        "operator": ">"
+                    },
+                    "mana": {
+                        "value": "70",
+                        "operator": "<"
+                    }
+                },
+                "then": {
+                    "value": "90",
+                    "operator": "+"
+                }
+            },
+            "fatigue":{
+                "value": "20",
+                "operator": "+"
+            }
+        }
+        
+    },
+    "Sleep":{
+        "conds":{
+        },
+        "effects":{
+            "health":{
+                "value": "0",
+                "operator": "+",
+                "conds": {
+                    "mana": {
+                        "value": "30",
+                        "operator": "<"
+                    }
+                },
+                "then": {
+                    "value": "90",
+                    "operator": "+"
+                }
+            },
+            "happienss":{
+                "value": "0",
+                "operator": "+",
+                "conds": {
+                    "mana": {
+                        "value": "70",
+                        "operator": ">"
+                    }
+                },
+                "then": {
+                    "value": "3",
+                    "operator": "-"
+                }
+            },
+            "mana":{
+                "value": "50",
+                "operator": "-"
+            },
+            "fatigue":{
+                "value": "70",
+                "operator": "-"
+            }
+        }
+        
+    }
+}
