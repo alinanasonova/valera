@@ -14,6 +14,7 @@ class Game
   end
 
   def action_menu(status, action_item, action_hash, arr_action)
+    # p action_menu.class
     case action_item
     when 1..7
       selected_action_ = action_hash[arr_action[action_item - 1]]
@@ -23,7 +24,7 @@ class Game
     when 9
       Saver.save_load_menu(status, 8)
     when 0
-      abort
+      abort 'Game Over'
     end
   end
 
