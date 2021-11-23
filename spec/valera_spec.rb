@@ -1,4 +1,4 @@
-require './valera'
+require './lib/valera'
 
 RSpec.describe Valera do
   describe '.valera' do

@@ -1,4 +1,4 @@
-require './saver'
+require './lib/saver'
 
 RSpec.describe Saver do
   describe '.saver' do

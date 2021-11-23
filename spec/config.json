@@ -1,0 +1,51 @@
+{
+    "Go work":
+    {
+        "conds":
+        {
+            "mana": 
+            {
+                "value": "10",
+                "operator": ">"
+            }
+        },
+        "effects":
+        {
+            "happienss": 
+            {
+                "value": "5",
+                "operator": "-"
+            },
+            "mana": 
+            {
+                "value": "30",
+                "operator": "-"
+            },
+            "money": 
+            {
+                "value": "100",
+                "operator": "+",
+                "conds":
+                {
+                    "happienss": 
+                    {
+                        "value": "20",
+                        "operator": ">"
+                    }
+                },
+                "then":
+                {
+                    "value": "150",
+                    "operator": "+"
+                }
+            },
+            "fatigue": 
+            {
+                "value": "70",
+                "operator": "+"
+            }
+        }
+        
+    }
+        
+}

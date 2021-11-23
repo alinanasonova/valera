@@ -1,74 +1,101 @@
-require './actions'
+require './lib/actions'
 
 RSpec.describe Actions do
   describe '.actions' do
     status = {
-      'hp' => 100,
-      'mana' => 30,
-      'happienss' => 5,
-      'fatigue' => 0,
-      'money' => 300
+      'hp' => 10,
+      'mana' => 10,
+      'happienss' => 10,
+      'fatigue' => 10,
+      'money' => 10
     }
-
-    context 'go_work' do
-      expected = {
-        'hp' => 100,
-        'happienss' => 0,
-        'mana' => 0,
-        'money' => 400,
-        'fatigue' => 70
-      }
-      it { expect(Actions.go_work(status.clone)).to eq expected }
+    action = {
+      "conds"=>{
+        "mana"=>{
+            "value"=> "50",
+            "operator"=> "<"
+        }
+      },
+      "effects"=>{
+        "happienss"=>{
+            "value"=> "10",
+            "operator"=> "+"
+        },
+        "mana"=>{
+            "value"=> "10",
+            "operator"=> "+"
+        },
+        "money"=>{
+            "value"=> "10",
+            "operator"=> "+",
+            "conds"=>{
+                "happienss"=>{
+                    "value"=> "30",
+                    "operator"=> ">"
+                }
+            },
+            "then"=>{
+                "value"=> "150",
+                "operator"=> "+"
+            }
+        },
+        "fatigue"=>{
+            "value"=> "10",
+            "operator"=> "+"
+        }
+    }}
+    context 'sender' do
+      key = {"value"=>"10", "operator"=>"+"}
+      expected = 20
+      it { expect(Actions.new.sender(status["hp"], key)).to eq expected }
     end
-    context 'see_nature' do
-      expected = {
-        'hp' => 100,
-        'mana' => 20,
-        'happienss' => 6,
-        'fatigue' => 10,
-        'money' => 300
+    context 'action_cond' do
+      action_cond_ = {
+        "mana" => {
+          "value" => "5", 
+          "operator" => ">"
+        }
       }
-      it { expect(Actions.see_nature(status.clone)).to eq expected }
+      expected = true
+      it { expect(Actions.new.action_cond(status.clone, action_cond_)).to eq expected }
     end
-    context 'see_serial' do
-      expected = {
-        'hp' => 95,
-        'mana' => 60,
-        'happienss' => 4,
-        'fatigue' => 10,
-        'money' => 280
+    context 'conds_then_field' do
+      key = {
+        "value"=>"10", 
+        "operator"=>"+", 
+        "conds"=>{
+          "happienss"=>{
+            "value"=>"20", 
+            "operator"=>">"
+          }
+        }, 
+        "then"=>{
+            "value"=>"20", 
+            "operator"=>"+"
+        }
       }
-      it { expect(Actions.see_serial(status.clone)).to eq expected }
+      expected = 20
+      it { expect(Actions.new.conds_then_field(status, status["money"], key)).to eq expected }
     end
-    context 'drink_with_marginals' do
+    context 'change_status' do
       expected = {
-        'hp' => 20,
-        'mana' => 120,
-        'happienss' => 10,
-        'fatigue' => 80,
-        'money' => 150
+        "hp"=>10, 
+        "mana"=>20, 
+        "happienss"=>20, 
+        "fatigue"=>20, 
+        "money"=>20
       }
-      it { expect(Actions.drink_with_marginals(status.clone)).to eq expected }
+      it { expect(Actions.new.change_status(status.clone, action['effects'])).to eq expected }
     end
-    context 'sing' do
+    context 'selected_action' do
       expected = {
-        'hp' => 100,
-        'mana' => 40,
-        'happienss' => 6,
-        'fatigue' => 20,
-        'money' => 310
+        "hp"=>10, 
+        "mana"=>20, 
+        "happienss"=>20, 
+        "fatigue"=>20, 
+        "money"=>20
       }
-      it { expect(Actions.sing(status.clone)).to eq expected }
-    end
-    context 'sleep' do
-      expected = {
-        'hp' => 100,
-        'mana' => -20,
-        'happienss' => 5,
-        'fatigue' => -70,
-        'money' => 300
-      }
-      it { expect(Actions.sleep(status.clone)).to eq expected }
+      it { expect(Actions.new.selected_action(status.clone, action)).to eq expected }
     end
   end
 end
