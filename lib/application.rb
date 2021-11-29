@@ -1,12 +1,12 @@
 require_relative 'game'
-require_relative 'interface'
+require_relative 'menu'
 require_relative 'reader'
 require 'json'
 
 class Application
   def initialize
     @game = Game.new
-    @interface = Interface.new
+    @menu = Menu.new
     @valera = Valera.new
     @reader = Reader.new
   end
@@ -32,7 +32,7 @@ class Application
       print "Fatigue: #{@valera.status['fatigue']}\n"
       print "Money: #{@valera.status['money']}\n\n"
 
-      @interface.print_actions
+      @menu.print_actions
       @reader.read_action(@game)
       @valera = @game.do_action(action_hash, arr_action)
 
