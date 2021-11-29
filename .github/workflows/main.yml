@@ -20,5 +20,3 @@ jobs:
       - name: RSpec
         run: |
           bundle exec rspec
-      - name: Type Checking
-        run: bundle exec steep check
