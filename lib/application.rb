@@ -34,7 +34,7 @@ class Application
 
       @menu.print_actions
       @reader.read_action(@game)
-      @valera = @game.do_action(action_hash, arr_action)
+      @valera = @game.choose_action!(action_hash, arr_action)
 
       if @valera == false
         puts('The End')

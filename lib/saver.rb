@@ -18,9 +18,9 @@ class Saver
     loop do
       printf "enter file name\ninput >> "
       filename = "./saves/#{$stdin.gets.strip}.json"
-      break unless !File.file?(filename) && (choice == 8)
+      break unless !File.file?(filename) && (choice == 2)
 
-      puts 'file doesn`t exist'
+      puts 'YOU DIED'
     end
 
     case choice
