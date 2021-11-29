@@ -1,9 +1,13 @@
 {
     "Go work":{
         "conds": {
+            "mana": {
+                "value": "30",
+                "operator": ">="
+            },
             "fatigue": {
                 "value": "30",
-                "operator": ">"
+                "operator": "<="
             }
         },
         "effects": {
@@ -232,5 +236,11 @@
             }
         }
         
+    },
+    "Save": {
+        "save":{}
+    },
+    "Load": {
+        "load":{}
     }
 }
