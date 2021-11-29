@@ -7,8 +7,9 @@ class Menu
     @arr_action = []
     action_hash.each_key { |key| @arr_action.push key }
   end
+
   def print_actions
-    @arr_action.map.with_index { |action, i| print "(#{i+1}) - #{action}\n" }
+    @arr_action.map.with_index { |action, i| print "(#{i + 1}) - #{action}\n" }
     puts '(0) - Exit'
   end
 end

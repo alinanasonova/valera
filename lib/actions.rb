@@ -33,12 +33,8 @@ class Actions
   end
 
   def execute!(status, action)
-    if action.to_s.match("{\"save\"=>{}}")
-      Saver.save_load_menu(status, 1)
-    end
-    if action.to_s.match("{\"load\"=>{}}")
-      Saver.save_load_menu(status, 2)
-    end
+    Saver.save_load_menu(status, 1) if action.to_s.match('{"save"=>{}}')
+    Saver.save_load_menu(status, 2) if action.to_s.match('{"load"=>{}}')
     select_action(status, action)
   end
 end
