@@ -19,6 +19,6 @@ jobs:
         run: bundle exec rubocop
       - name: Type Checking
         run: bundle exec steep check
-      - name: RSpec Valera
+      - name: RSpec
         run: |
           bundle exec rspec
