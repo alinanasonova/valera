@@ -24,10 +24,10 @@ class Saver
     end
 
     case choice
-    when 7
+    when 1
       save_game(status, filename)
       status
-    when 8
+    when 2
       load_game(filename)
     end
   end
