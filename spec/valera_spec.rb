@@ -1,37 +1,37 @@
 require './lib/valera'
 
 RSpec.describe Valera do
-  describe '.valera' do
+  describe '#dead?' do
     valera = Valera.new
-    context 'check_true' do
+    context 'Negative health - valera is dead' do
       status = {
-        'health' => 100,
+        'health' => -5,
         'mana' => 30,
-        'happienss' => 5,
+        'happienss' => 45,
         'fatigue' => 0,
         'money' => 1000
       }
-      it { expect(valera.check_status(status)).to eq true }
+      it { expect(valera.dead?(status)).to eq true }
     end
-    context 'check_false' do
+    context 'Valera is alive but values out of range' do
       status = {
-        'health' => 30,
+        'health' => 120,
         'mana' => 250,
         'happienss' => 5,
-        'fatigue' => 0,
-        'money' => 1000
+        'fatigue' => -1,
+        'money' => 50
       }
-      it { expect(valera.check_status(status)).to eq false }
+      it { expect(valera.dead?(status)).to eq false }
     end
-    context 'check_false' do
+    context 'Fatigue is greater than 100 - valera is dead' do
       status = {
         'health' => 30,
         'mana' => 30,
         'happienss' => 5,
         'fatigue' => 250,
-        'money' => 1000
+        'money' => 50
       }
-      it { expect(valera.check_status(status)).to eq false }
+      it { expect(valera.dead?(status)).to eq true }
     end
   end
 end

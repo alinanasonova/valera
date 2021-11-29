@@ -1,6 +1,5 @@
 require './lib/game'
 require 'json'
-require './lib/valera'
 require 'stringio'
 
 module Kernel
@@ -17,65 +16,56 @@ module Kernel
 end
 
 RSpec.describe Game do
-  describe '.game' do
+  describe '#choose_action!' do
     game = Game.new
     status = {
       'health' => 100,
-      'mana' => 50,
-      'happienss' => 20,
-      'fatigue' => 50,
+      'mana' => 30,
+      'happienss' => 5,
+      'fatigue' => 0,
       'money' => 50
     }
     action_item = 1
     file = File.read('./config.json')
     action_hash = JSON.parse(file)
     arr_action = ['Go work']
-
-    # context 'do_action' do
-    #  exp = {
-    #    'health' => 100,
-    #    'mana' => 20,
-    #    'happienss' => 45,
-    #    'fatigue' => 120,
-    #    'money' => 200
-    #  }
-    #
-    #  it { expect(game.do_action(action_hash, arr_action)).to eq exp }
-    # end
-    context 'action_menu' do
-      expected_status = {
-        'health' => 100,
-        'mana' => 20,
-        'happienss' => 15,
-        'fatigue' => 120,
-        'money' => 150
-      }
-      it { expect(game.action_menu(status, action_item, action_hash, arr_action)).to eq expected_status }
+    context 'Go work' do
+      expected_status = { 'fatigue' => 70, 'happienss' => 0, 'health' => 100, 'mana' => 0, 'money' => 150 }
+      it { expect(game.do_action!(status, action_item, action_hash, arr_action)).to eq expected_status }
     end
+  end
+  describe '#choose_action!' do
+    game = Game.new
+    file = File.read('./config.json')
+    action_hash = []
+    arr_action = []
+    game.action_item = 0
+    it 'Leaving the game' do
+      expect do
+        game.choose_action!(action_hash, arr_action).call(game.valera)
+      rescue SystemExit
+        nil
+      end.to output("Game Over\n").to_stderr
+    end
+    it 'YOU DIED' do
+      expect do
+        file = File.read('./config.json')
+        action_hash = JSON.parse(file)
+        arr_action = []
+        action_hash.each_key { |key| arr_action.push key }
 
-    # context 'action_menu' do
-    #  expected_status = {
-    #    'health' => 100,
-    #    'mana' => 20,
-    #    'happienss' => 45,
-    #    'fatigue' => 120,
-    #    'money' => 200
-    #  }
-    #  resque
-    #  action_item = 0
-    #  it { expect(game.action_menu(status, action_item, action_hash, arr_action)).to output("Game Over").to_stderr }
-    # end
-    # describe '.program exit' do
-    #  it 'aaaaa' do
-    ##    expect do
-    ##      input = '0'
-    #      capture_stdout(input) do
-    #        Game.new.action_menu(status, action_item, action_hash, arr_action)
-    #      rescue SystemExit
-    #        nil
-    #      end
-    #    end.to output("Game Over\n").to_stderr
-    #  end
-    # end
+        game.valera.status = {
+          'health' => 5,
+          'mana' => 30,
+          'happienss' => 5,
+          'fatigue' => 0,
+          'money' => 1000
+        }
+        game.action_item = 4
+        game.choose_action!(action_hash, arr_action).call(game.valera)
+      rescue SystemExit
+        nil
+      end.to output("YOU DIED\n").to_stderr
+    end
   end
 end
