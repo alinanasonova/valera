@@ -1,7 +1,7 @@
 class Valera
   attr_accessor :status
 
-  def initialize(health = 100, mana = 50, happienss = 50, money = 50, fatigue = 50)
+  def initialize(health = 100, mana = 50, happienss = 0, money = 50, fatigue = 50)
     @status = {
       'health' => health,
       'mana' => mana,
@@ -12,40 +12,24 @@ class Valera
   end
 
   def check_status(status)
-    fix_status(status)
-    if check_hp(status['health']) && check_mana(status['mana']) && check_happienss(status['happienss']) \
-       && check_fatigue(status['fatigue']) && check_money(status['money'])
+    fix_status!(status)
+    if check_gameover
       @status = status
       return true
     end
     false
   end
-
-  def fix_status(status)
-    status['health'] = 0 if (status['health']).negative?
+  def check_gameover
+    return false if status['health'] < 0
+    return false if status['fatigue'] > 100
+    return true
+  end
+  def fix_status!(status)
     status['health'] = 100 if status['health'] > 100
     status['mana'] = 0 if (status['mana']).negative?
+    status['mana'] = 100 if (status['mana']) > 100
     status['happienss'] = 10 if status['happienss'] > 10
+    status['happienss'] = -10 if status['happienss'] < -10
     status['fatigue'] = 0 if (status['fatigue']).negative?
-  end
-
-  def check_hp(health)
-    health.positive?
-  end
-
-  def check_mana(mana)
-    mana <= 100
-  end
-
-  def check_happienss(happienss)
-    happienss >= -20
-  end
-
-  def check_fatigue(fatigue)
-    fatigue <= 100
-  end
-
-  def check_money(money)
-    money >= 0
   end
 end
