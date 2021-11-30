@@ -7,6 +7,9 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Layout/LineLength:
+  Max: 170
+
 Metrics/AbcSize:
   Max: 50
 
