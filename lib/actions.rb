@@ -35,6 +35,8 @@ class Actions
   def execute!(status, action)
     Saver.save_load_menu(status, 1) if action.to_s.match('{"save"=>{}}')
     Saver.save_load_menu(status, 2) if action.to_s.match('{"load"=>{}}')
-    select_action(status, action)
+    after_action = select_action(status, action)
+    puts "You can't do it" if after_action.nil?
+    after_action
   end
 end
